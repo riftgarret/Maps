@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Constant name="InputColumnLeftMarginGap" val="30"/>
+    <Constant name="InputColumnRightMarginGap" val="-90"/>
+    <Constant name="InputSliderValueGap" val="10"/>
+    <Constant name="InputCheckBoxVerticalGap" val="10"/>
+
+	<Frame type="Slider" name="MTSliderTemplate" template="StandardTemplates/StandardSliderTemplate">
+        <Continuous val="true"/>
+    </Frame>
+	
+	<Frame type="Label" name="MTHeaderLabelTemplate">
+        <Style val="@@StandardOptionsPanelHeader"/>
+    </Frame>
+
+    <Frame type="Label" name="MTLabelTemplate">
+        <Style val="@@OptionsLabel"/>
+    </Frame>
+	
+	<Frame type="MTProbePanel" name="MTProbePanelTemplate">
+		<Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
+            <Anchor relative="$parent"/>
+        </Frame>
+
+		<Frame type="Frame" name="ZergPanel">
+	</Frame>
+</Desc>
