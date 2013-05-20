@@ -1,27 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
-	<Constant name="InputColumnLeftMarginGap" val="30"/>
+    <Constant name="InputColumnLeftMarginGap" val="30"/>
     <Constant name="InputColumnRightMarginGap" val="-90"/>
     <Constant name="InputSliderValueGap" val="10"/>
     <Constant name="InputCheckBoxVerticalGap" val="10"/>
 
-	<Frame type="Slider" name="MTSliderTemplate" template="StandardTemplates/StandardSliderTemplate">
+    <Frame type="Slider" name="MTSliderTemplate" template="StandardTemplates/StandardSliderTemplate">
         <Continuous val="true"/>
     </Frame>
-	
-	<Frame type="Label" name="MTHeaderLabelTemplate">
+    
+    <Frame type="Label" name="MTHeaderLabelTemplate">
         <Style val="@@StandardOptionsPanelHeader"/>
     </Frame>
 
     <Frame type="Label" name="MTLabelTemplate">
         <Style val="@@OptionsLabel"/>
     </Frame>
-	
-	<Frame type="MTProbePanel" name="MTProbePanelTemplate">
-		<Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
+    
+    <Frame type="Frame" name="MTProbePanelTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+        
+        <Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
             <Anchor relative="$parent"/>
         </Frame>
 
-		<Frame type="Frame" name="ZergPanel">
-	</Frame>
+        
+        
+    <Frame type="Frame" name="ZergPanel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
+            <Height val="450"/>
+
+            <Frame type="Label" name="ZergSpeedLabel" template="MTProbePanel/MTLabelTemplate">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                
+                <Text val="Zergling Speed relative to probe"/>
+            </Frame>
+            
+            <Frame type="Slider" name="ZergSpeedSlider" template="MTProbePanel/MTSliderTemplate">
+                <Anchor side="Top" relative="$parent/ZergSpeedLabel" pos="Max" offset="3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="#InputColumnLeftMarginGap"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="#InputColumnRightMarginGap"/>
+                <Tooltip val="Zergling speed"/>
+                <MinValue val="25.000000"/>
+                <MaxValue val="100.000000"/>
+            </Frame>
+
+            <Frame type="Label" name="ZergSpeedValueLabel" template="MTProbePanel/MTLabelTemplate">
+                <Anchor side="Top" relative="$parent/ZergSpeedSlider" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/ZergSpeedSlider" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent/ZergSpeedSlider" pos="Max" offset="#InputSliderValueGap"/>
+            </Frame>  
+            
+            <Frame type="Label" name="ProbeWaypointLabel" template="MTProbePanel/MTLabelTemplate">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent/ZergSpeedSlider" pos="Max" offset="10"/>                
+                <Text val="Probe waypoint control"/>
+            </Frame>          
+
+            <Frame type="Label" name="ProbeWaypointLabel" template="MTProbePanel/MTLabelTemplate">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent/ZergSpeedSlider" pos="Max" offset="10"/>                
+                <Text val="Probe waypoint control"/>
+            </Frame> 
+
+            <Frame type="Pulldown" name="ProbeWaypointPulldown" template="StandardTemplates/StandardPulldownTemplate">
+                <Anchor side="Top" relative="$parent/ProbeWaypointLabel" pos="Max" offset="3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Tooltip val="Probe waypoint control"/>
+            </Frame>
+        </Frame>
+
+        
+    </Frame>
 </Desc>

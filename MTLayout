@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Constant name="InputColumnLeftMarginGap" val="30"/>
+    <Constant name="InputColumnRightMarginGap" val="-90"/>
+    <Constant name="InputSliderValueGap" val="10"/>
+    <Constant name="InputCheckBoxVerticalGap" val="10"/>
+
+    <Frame type="Slider" name="MTSliderTemplate" template="StandardTemplates/StandardSliderTemplate">
+        <Continuous val="true"/>
+    </Frame>
+    
+    <Frame type="Label" name="MTHeaderLabelTemplate">
+        <Style val="@@StandardOptionsPanelHeader"/>
+    </Frame>
+
+    <Frame type="Label" name="MTLabelTemplate">
+        <Style val="@@OptionsLabel"/>
+    </Frame>
+
+    <Frame type="Frame" name="MTDropdownPanelTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+        <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
+        <Height val="450"/>
+
+        <Frame type="Label" name="MTLabel" template="MTProbePanel/MTLabelTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                
+            <Text val="Probe waypoint control"/>
+        </Frame> 
+
+        <Frame type="Pulldown" name="MTPulldown" template="StandardTemplates/StandardPulldownTemplate">
+            <Anchor side="Top" relative="$parent/MTLabel" pos="Max" offset="3"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Tooltip val="Probe waypoint control"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="MTSliderPanelTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
+            <Height val="450"/>
+
+            <Frame type="Label" name="MTLabel" template="MTLayout/MTLabelTemplate">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                
+                <Text val="temp"/>
+            </Frame>
+            
+            <Frame type="Slider" name="MTSlider" template="MTLayout/MTSliderTemplate">
+                <Anchor side="Top" relative="$parent/MTLabel" pos="Max" offset="3"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="#InputColumnLeftMarginGap"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="#InputColumnRightMarginGap"/>
+                <Tooltip val="temp"/>
+                <MinValue val="0"/>
+                <MaxValue val="100.000000"/>
+            </Frame>
+
+            <Frame type="Label" name="MTValueLabel" template="MTLayout/MTLabelTemplate">
+                <Anchor side="Top" relative="$parent/MTSlider" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/MTSlider" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent/MTSlider" pos="Max" offset="#InputSliderValueGap"/>
+            </Frame>  
+                    
+        </Frame>
+    
+    <Frame type="Frame" name="MTProbePanel">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+        
+        <Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
+            <Anchor relative="$parent"/>
+        </Frame>
+        
+        <Frame type="Frame" name="MTZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">            
+        </Frame>
+
+        <Frame type="Frame" name="MTProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
+        </Frame>
+        
+    </Frame>
+</Desc>
