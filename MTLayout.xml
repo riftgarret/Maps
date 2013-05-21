@@ -17,11 +17,9 @@
         <Style val="@@OptionsLabel"/>
     </Frame>
 
-    <Frame type="Frame" name="MTDropdownPanelTemplate">
-        <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+    <Frame type="Frame" name="MTDropdownPanelTemplate">       
         <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
         <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
-        <Height val="450"/>
 
         <Frame type="Label" name="MTLabel" template="MTProbePanel/MTLabelTemplate">
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
@@ -36,11 +34,9 @@
         </Frame>
     </Frame>
 
-    <Frame type="Frame" name="MTSliderPanelTemplate">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+    <Frame type="Frame" name="MTSliderPanelTemplate">            
             <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
             <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
-            <Height val="450"/>
 
             <Frame type="Label" name="MTLabel" template="MTLayout/MTLabelTemplate">
                 <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
@@ -75,10 +71,14 @@
             <Anchor relative="$parent"/>
         </Frame>
         
-        <Frame type="Frame" name="MTZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">            
+        <Frame type="Frame" name="MTZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">
+			<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+			<Height val="100"/>
         </Frame>
 
         <Frame type="Frame" name="MTProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
+			<Anchor side="Top" relative="$parent/MTZergSpeedPanel" pos="Max" offset="10"/>
+			<Height val="100"/>
         </Frame>
         
     </Frame>
