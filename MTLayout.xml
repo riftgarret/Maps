@@ -5,6 +5,9 @@
     <Constant name="InputSliderValueGap" val="10"/>
     <Constant name="InputCheckBoxVerticalGap" val="10"/>
 
+<!--
+ Templates
+  -->
     <Frame type="Slider" name="MTSliderTemplate" template="StandardTemplates/StandardSliderTemplate">
         <Continuous val="true"/>
     </Frame>
@@ -16,70 +19,327 @@
     <Frame type="Label" name="MTLabelTemplate">
         <Style val="@@OptionsLabel"/>
     </Frame>
+    
+
+    <!-- 
+        Template Panels
+    -->    
+
+    <Frame type="Frame" name="MTConfigButtonPanel">                
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+        <Height val="63"/>
+
+        <Frame type="Image" name="Thumbnail">
+            <Texture val="Assets/Textures/btn-unit-terran-marine.dds"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Width val="63"/>
+            <Height val="63"/>
+        </Frame>
+
+        <Frame type="Button" name="ConfigButton" template="StandardBattlenetTemplates/BattlenetStandardMediumButtonTemplate">            
+            <Anchor side="Left" relative="$parent/Thumbnail" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                        
+        </Frame>
+
+        <Frame type="CheckBox" name="ConfigCheckbox" template="StandardTemplates/StandardCheckBoxTemplate"> 
+            <Anchor side="Left" relative="$parent/ConfigButton" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="-12"/>
+            <Width val="25"/>
+            <Height val="25"/>
+        </Frame>
+    </Frame>
+
 
     <Frame type="Frame" name="MTDropdownPanelTemplate">       
         <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
         <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
 
-        <Frame type="Label" name="MTLabel" template="MTProbePanel/MTLabelTemplate">
+        <Frame type="Label" name="MTNameLabel" template="MTLayout/MTLabelTemplate">
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                
             <Text val="Probe waypoint control"/>
         </Frame> 
 
         <Frame type="Pulldown" name="MTPulldown" template="StandardTemplates/StandardPulldownTemplate">
-            <Anchor side="Top" relative="$parent/MTLabel" pos="Max" offset="3"/>
+            <Anchor side="Top" relative="$parent/MTNameLabel" pos="Max" offset="3"/>
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
             <Tooltip val="Probe waypoint control"/>
         </Frame>
     </Frame>
 
+
     <Frame type="Frame" name="MTSliderPanelTemplate">            
-            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
-            <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
-
-            <Frame type="Label" name="MTLabel" template="MTLayout/MTLabelTemplate">
-                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                
-                <Text val="temp"/>
-            </Frame>
-            
-            <Frame type="Slider" name="MTSlider" template="MTLayout/MTSliderTemplate">
-                <Anchor side="Top" relative="$parent/MTLabel" pos="Max" offset="3"/>
-                <Anchor side="Left" relative="$parent" pos="Min" offset="#InputColumnLeftMarginGap"/>
-                <Anchor side="Right" relative="$parent" pos="Max" offset="#InputColumnRightMarginGap"/>
-                <Tooltip val="temp"/>
-                <MinValue val="0"/>
-                <MaxValue val="100.000000"/>
-            </Frame>
-
-            <Frame type="Label" name="MTValueLabel" template="MTLayout/MTLabelTemplate">
-                <Anchor side="Top" relative="$parent/MTSlider" pos="Mid" offset="0"/>
-                <Anchor side="Bottom" relative="$parent/MTSlider" pos="Mid" offset="0"/>
-                <Anchor side="Left" relative="$parent/MTSlider" pos="Max" offset="#InputSliderValueGap"/>
-            </Frame>  
-                    
-        </Frame>
-    
-    <Frame type="Frame" name="MTProbePanel">
-        <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
         <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
-        <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
-        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+        <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
+
+        <Frame type="Label" name="MTNameLabel" template="MTLayout/MTLabelTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                
+            <Text val="temp"/>
+        </Frame>
+        
+        <Frame type="Slider" name="MTSlider" template="MTLayout/MTSliderTemplate">
+            <Anchor side="Top" relative="$parent/MTNameLabel" pos="Max" offset="3"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="#InputColumnLeftMarginGap"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="#InputColumnRightMarginGap"/>
+            <Tooltip val="temp"/>
+            <MinValue val="0"/>
+            <MaxValue val="100.000000"/>
+        </Frame>
+
+        <Frame type="Label" name="MTValueLabel" template="MTLayout/MTLabelTemplate">
+            <Anchor side="Top" relative="$parent/MTSlider" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/MTSlider" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/MTSlider" pos="Max" offset="#InputSliderValueGap"/>
+        </Frame>                  
+    </Frame>
+
+
+    <!-- Frame Panel for configuration details -->
+    <Frame type="Frame" name="MTPanelTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
         
         <Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
             <Anchor relative="$parent"/>
         </Frame>
+    </Frame>
+
+
+<!-- Master Frame -->
+
+<Frame type="Frame" name="MasterPanel">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+
         
-        <Frame type="Frame" name="MTZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">
-			<Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-			<Height val="100"/>
+
+
+        <Frame type="Frame" name="LeftFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>        
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Width val="290"/>
+
+            <Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
+                <Anchor relative="$parent"/>
+            </Frame>
+
+            <Frame type="Frame" name="AttackConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Attack Waves"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="CreepConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/AttackConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Creep"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="EnergyConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/CreepConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Energy"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="ExecutorConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/EnergyConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Executor"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="MineralConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/ExecutorConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Minierals"/>
+                </Frame>
+            </Frame>
+            
+            <Frame type="Frame" name="MinimapConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/MineralConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Minierals"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="OverqueueConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/MinimapConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Overqueue"/>
+                </Frame>
+            </Frame>            
+
+            <Frame type="Frame" name="ProbeConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/OverqueueConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Probe"/>
+                </Frame>
+            </Frame>            
+
+            <Frame type="Frame" name="QueenConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/ProbeConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Queen"/>
+                </Frame>
+            </Frame>
+                
+            <Frame type="Frame" name="SupplyCapConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/QueenConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Minierals"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="WorkerConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
+                <Anchor side="Top" relative="$parent/SupplyCapConfigButtonPanel" pos="Max" offset="10"/>
+                <Frame type="Button" name="ConfigButton">
+                    <Text val="Workers"/>
+                </Frame>
+            </Frame>
+
         </Frame>
 
-        <Frame type="Frame" name="MTProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
-			<Anchor side="Top" relative="$parent/MTZergSpeedPanel" pos="Max" offset="10"/>
-			<Height val="100"/>
+
+        <Frame type="Frame" name="RightFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/LeftFrame" pos="Max" offset="0"/>        
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>     
+
+        <!-- PROBE -->
+            <Frame type="Frame" name="MTProbePanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="ZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Zerg speed relative to probe"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="25"/>
+                        <MaxValue val="100"/>
+                    </Frame>
+                </Frame>
+
+                <Frame type="Frame" name="ProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
+                    <Anchor side="Top" relative="$parent/ZergSpeedPanel" pos="Max" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Waypoint control for probe"/>
+                    </Frame>
+
+                </Frame>
+                
+            </Frame>
+
+        </Frame>
+    </Frame>
+
+    <!-- Frame Panel for Configuration Buttons -->
+
+
+    
+    <!-- PROBE -->
+    <Frame type="Frame" name="MTProbePanel" template="MTLayout/MTPanelTemplate">        
+        
+        <Frame type="Frame" name="ZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Height val="100"/>
+            <Frame type="Label" name="MTNameLabel">
+                <Text val="Zerg speed relative to probe"/>
+            </Frame>
+            <Frame type="Slider" name="MTSlider">
+                <MinValue val="25"/>
+                <MaxValue val="100"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="ProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
+            <Anchor side="Top" relative="$parent/ZergSpeedPanel" pos="Max" offset="10"/>
+            <Height val="100"/>
+            <Frame type="Label" name="MTNameLabel">
+                <Text val="Waypoint control for probe"/>
+            </Frame>
+
         </Frame>
         
     </Frame>
+
+<!-- MINERALS -->
+    <Frame type="Frame" name="MTMineralPanel" template="MTLayout/MTPanelTemplate">        
+        
+        <Frame type="Frame" name="MineralPanel" template="MTLayout/MTSliderPanelTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Height val="100"/>
+
+            <Frame type="Label" name="MTNameLabel">
+                <Text val="Maximum amount of minerals"/>
+            </Frame>
+        </Frame>        
+    </Frame>
+
+<!-- DROPS -->
+    <Frame type="Frame" name="MTMinimapDropsPanel" template="MTLayout/MTPanelTemplate">        
+        <Frame type="Frame" name="StartTimePanel" template="MTLayout/MTSliderPanelTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Height val="100"/>
+            <Frame type="Label" name="MTNameLabel">
+                <Text val="Initial time drops start appearing"/>
+            </Frame>
+
+            <Frame type="Slider" name="MTSlider">
+                <MinValue val="0"/>
+                <MaxValue val="480"/>
+            </Frame>
+        </Frame>   
+
+        <Frame type="Frame" name="FrequencyPanel" template="MTLayout/MTSliderPanelTemplate">
+            <Anchor side="Top" relative="$parent/StartTimePanel" pos="Max" offset="10"/>
+            <Height val="100"/>
+            <Frame name="MTNameLabel">
+                <Text val="Frequency of drops"/>
+            </Frame>
+            <Frame name="MTSlider">
+                <MinValue val="10"/>
+                <MaxValue val="180"/>
+            </Frame>
+        </Frame>        
+
+        <Frame type="Frame" name="MaxDropSupplyPanel" template="MTLayout/MTSliderPanelTemplate">
+            <Anchor side="Top" relative="$parent/FrequencyPanel" pos="Max" offset="10"/>
+            <Height val="100"/>
+            <Frame type="Label" name="MTNameLabel">
+                <Text val="Maximum drop supply unloading from enemy drops"/>
+            </Frame>
+            <Frame type="Slider" name="MTSlider">
+                <MinValue val="0"/>
+                <MaxValue val="8"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="MinArmySupplyPanel" template="MTLayout/MTSliderPanelTemplate">
+            <Anchor side="Top" relative="$parent/MaxDropSupplyPanel" pos="Max" offset="10"/>
+            <Height val="100"/>
+            <Frame type="Label" name="MTNameLabel">
+                <Text val="Minimum Army supply you have before drop can commence "/>
+            </Frame>
+            <Frame type="Slider" name="MTSlider">
+                <MinValue val="0"/>
+                <MaxValue val="50"/>
+            </Frame>
+        </Frame>
+
+    </Frame>
+    
 </Desc>
