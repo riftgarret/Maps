@@ -307,10 +307,10 @@
         <Frame type="Frame" name="FrequencyPanel" template="MTLayout/MTSliderPanelTemplate">
             <Anchor side="Top" relative="$parent/StartTimePanel" pos="Max" offset="10"/>
             <Height val="100"/>
-            <Frame name="MTNameLabel">
+            <Frame type="Label" name="MTNameLabel">
                 <Text val="Frequency of drops"/>
             </Frame>
-            <Frame name="MTSlider">
+            <Frame type="Slider" name="MTSlider">
                 <MinValue val="10"/>
                 <MaxValue val="180"/>
             </Frame>
