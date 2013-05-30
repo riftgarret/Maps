@@ -13,7 +13,7 @@
     </Frame>
     
     <Frame type="Label" name="MTHeaderLabelTemplate">
-        <Style val="@@StandardOptionsPanelHeader"/>
+        <Style val="@@MTHeaderPanel"/>
     </Frame>
 
     <Frame type="Label" name="MTLabelTemplate">
@@ -54,7 +54,7 @@
 
     <Frame type="Frame" name="MTDropdownPanelTemplate">       
         <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
-        <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
 
         <Frame type="Label" name="MTNameLabel" template="MTLayout/MTLabelTemplate">
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
@@ -72,7 +72,7 @@
 
     <Frame type="Frame" name="MTSliderPanelTemplate">            
         <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
-        <Anchor side="Right" relative="$parent" pos="Mid" offset="-10"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
 
         <Frame type="Label" name="MTNameLabel" template="MTLayout/MTLabelTemplate">
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
@@ -96,6 +96,29 @@
         </Frame>                  
     </Frame>
 
+    <Frame type="Frame" name="MTTitlePanelTemplate">          
+        <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>  
+        <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        <Height val="120"/>
+
+        <Frame type="Label" name="MTTitleLabel" template="MTLayout/MTHeaderLabelTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>  
+            <Height val="40"/>
+            <Text val="temp"/>
+        </Frame>
+
+        <Frame type="Label" name="MTDescriptionLabel">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Top" relative="$parent/MTTitleLabel" pos="Max" offset="0"/> 
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>             
+            <Style val="@@MTLabel"/>
+            <Text val="temp"/>
+        </Frame>
+    </Frame>
 
     <!-- Frame Panel for configuration details -->
     <Frame type="Frame" name="MTPanelTemplate">
@@ -234,97 +257,296 @@
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>     
 
-    <!-- PROBE -->
-    <Frame type="Frame" name="MTProbePanel" template="MTLayout/MTPanelTemplate">        
-        
-        <Frame type="Frame" name="ZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-            <Height val="100"/>
-            <Frame type="Label" name="MTNameLabel">
-                <Text val="Zerg speed relative to probe"/>
-            </Frame>
-            <Frame type="Slider" name="MTSlider">
-                <MinValue val="25"/>
-                <MaxValue val="100"/>
-            </Frame>
-        </Frame>
+            <!-- PROBE -->
+            <Frame type="Frame" name="MTProbePanel" template="MTLayout/MTPanelTemplate"> 
 
-        <Frame type="Frame" name="ProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
-            <Anchor side="Top" relative="$parent/ZergSpeedPanel" pos="Max" offset="10"/>
-            <Height val="100"/>
-            <Frame type="Label" name="MTNameLabel">
-                <Text val="Waypoint control for probe"/>
-            </Frame>
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Probe"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"The probe challenge is to ensure that you are constantly moving a 
+'unit' around while attempting to maintain a strong macro based economy. The 
+probe cannot die."
+                            />
+                    </Frame>
+                </Frame>
+                
+                <Frame type="Frame" name="ZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Zerg speed relative to probe"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="25"/>
+                        <MaxValue val="100"/>
+                    </Frame>
+                </Frame>
 
-        </Frame>
-        
-    </Frame>
+                <Frame type="Frame" name="ProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
+                    <Anchor side="Top" relative="$parent/ZergSpeedPanel" pos="Max" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Waypoint control for probe"/>
+                    </Frame>
 
-<!-- MINERALS -->
-    <Frame type="Frame" name="MTMineralPanel" template="MTLayout/MTPanelTemplate">        
-        
-        <Frame type="Frame" name="MineralPanel" template="MTLayout/MTSliderPanelTemplate">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-            <Height val="100"/>
-
-            <Frame type="Label" name="MTNameLabel">
-                <Text val="Maximum amount of minerals"/>
-            </Frame>
-        </Frame>        
-    </Frame>
-
-<!-- DROPS -->
-    <Frame type="Frame" name="MTMinimapDropsPanel" template="MTLayout/MTPanelTemplate">        
-        <Frame type="Frame" name="StartTimePanel" template="MTLayout/MTSliderPanelTemplate">
-            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-            <Height val="100"/>
-            <Frame type="Label" name="MTNameLabel">
-                <Text val="Initial time drops start appearing"/>
+                </Frame>
+                
             </Frame>
 
-            <Frame type="Slider" name="MTSlider">
-                <MinValue val="0"/>
-                <MaxValue val="480"/>
-            </Frame>
-        </Frame>   
+        <!-- MINERALS -->
+            <Frame type="Frame" name="MTMineralPanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="MineralPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
 
-        <Frame type="Frame" name="FrequencyPanel" template="MTLayout/MTSliderPanelTemplate">
-            <Anchor side="Top" relative="$parent/StartTimePanel" pos="Max" offset="10"/>
-            <Height val="100"/>
-            <Frame type="Label" name="MTNameLabel">
-                <Text val="Frequency of drops"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Maximum amount of minerals"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="400"/>
+                        <MaxValue val="2000"/>
+                    </Frame>                    
+                </Frame>        
             </Frame>
-            <Frame type="Slider" name="MTSlider">
-                <MinValue val="10"/>
-                <MaxValue val="180"/>
-            </Frame>
-        </Frame>        
 
-        <Frame type="Frame" name="MaxDropSupplyPanel" template="MTLayout/MTSliderPanelTemplate">
-            <Anchor side="Top" relative="$parent/FrequencyPanel" pos="Max" offset="10"/>
-            <Height val="100"/>
-            <Frame type="Label" name="MTNameLabel">
-                <Text val="Maximum drop supply unloading from enemy drops"/>
-            </Frame>
-            <Frame type="Slider" name="MTSlider">
-                <MinValue val="0"/>
-                <MaxValue val="8"/>
-            </Frame>
-        </Frame>
+        <!-- DROPS -->
+            <Frame type="Frame" name="MTMinimapDropsPanel" template="MTLayout/MTPanelTemplate">        
+                <Frame type="Frame" name="StartTimePanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Initial time drops start appearing"/>
+                    </Frame>
 
-        <Frame type="Frame" name="MinArmySupplyPanel" template="MTLayout/MTSliderPanelTemplate">
-            <Anchor side="Top" relative="$parent/MaxDropSupplyPanel" pos="Max" offset="10"/>
-            <Height val="100"/>
-            <Frame type="Label" name="MTNameLabel">
-                <Text val="Minimum Army supply you have before drop can commence "/>
-            </Frame>
-            <Frame type="Slider" name="MTSlider">
-                <MinValue val="0"/>
-                <MaxValue val="50"/>
-            </Frame>
-        </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="0"/>
+                        <MaxValue val="480"/>
+                    </Frame>
+                </Frame>   
 
-    </Frame>
+                <Frame type="Frame" name="FrequencyPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent/StartTimePanel" pos="Max" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Frequency of drops"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="10"/>
+                        <MaxValue val="180"/>
+                    </Frame>
+                </Frame>        
+
+                <Frame type="Frame" name="MaxDropSupplyPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent/FrequencyPanel" pos="Max" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Maximum drop supply unloading from enemy drops"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <Continuous val="false"/>
+                        <MinValue val="0"/>
+                        <MaxValue val="8"/>
+                    </Frame>
+                </Frame>
+
+                <Frame type="Frame" name="MinArmySupplyPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent/MaxDropSupplyPanel" pos="Max" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Minimum Army supply you have before drop can commence "/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="0"/>
+                        <MaxValue val="50"/>
+                    </Frame>
+                </Frame>
+
+            </Frame>
+
+            <!-- Executor -->
+            <Frame type="Frame" name="ExecutorPanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="Frequency" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="The frequency at which the Executor will respawn after being saved"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="0"/>
+                        <MaxValue val="120"/>
+                    </Frame>                    
+                </Frame>        
+
+                <Frame type="Frame" name="IdleTimePanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="The amount of time the Executor is allowed to idle before being saved before time is deducted"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="10"/>
+                        <MaxValue val="120"/>
+                    </Frame>                    
+                </Frame>
+            </Frame>
+
+            <!-- Attack Waves -->
+            <Frame type="Frame" name="AttackWavePanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="StartTimePanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="First attack wave appears at"/>
+                    </Frame>
+
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="120"/>
+                        <MaxValue val="600"/>
+                    </Frame>
+                </Frame>  
+
+                <Frame type="Frame" name="FrequencyPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Frequency between attack waves that are not triggered by attacking the statue"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="60"/>
+                        <MaxValue val="360"/>
+                    </Frame>                    
+                </Frame>        
+
+                <Frame type="Frame" name="StatueCountPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent/FrequencyPanel" pos="Max" offset="10"/>
+                    <Height val="100"/>
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Number of times the statue will go invulnerable and send an attack wave before it can be destroyed"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <Continuous val="false"/>
+                        <MinValue val="0"/>
+                        <MaxValue val="10"/>
+                    </Frame>
+                </Frame>
+
+                <Frame type="Frame" name="StatueLifePanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Maximum life of statue"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="100"/>
+                        <MaxValue val="30000"/>
+                    </Frame>                    
+                </Frame>
+
+                <Frame type="Frame" name="ArmyRatioPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Enemy army ratio to player's army size"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="25"/>
+                        <MaxValue val="150"/>
+                    </Frame>                    
+                </Frame>
+            </Frame>
+
+            <!-- Creep -->
+            <Frame type="Frame" name="CreepPanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="AllowedIdleTimePanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="The amount of time the creep tumor is allowed to idle after becoming available before being saved before time is deducted"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="5"/>
+                        <MaxValue val="60"/>
+                    </Frame>                    
+                </Frame>        
+            </Frame>
+
+            <!-- Energy -->
+            <Frame type="Frame" name="EnergyPanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="MaxEnergyPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Maximum energy on base before time is deducted"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="50"/>
+                        <MaxValue val="150"/>
+                    </Frame>                    
+                </Frame>        
+            </Frame>
+
+            <!-- Overqueue -->
+            <Frame type="Frame" name="OverqueuePanel" template="MTLayout/MTPanelTemplate">        
+                <!-- add intro -->
+                     
+            </Frame>
+
+            <!-- Queen -->
+            <Frame type="Frame" name="QueenPanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="MaxEnergyPanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Maximum energy on quen before time is deducted"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="25"/>
+                        <MaxValue val="150"/>
+                    </Frame>                    
+                </Frame>        
+            </Frame>
+
+            <!-- Supply Cap -->
+            <Frame type="Frame" name="OverqueuePanel" template="MTLayout/MTPanelTemplate">        
+                <!-- add intro -->
+                     
+            </Frame>
+
+            <!-- Workers -->
+            <Frame type="Frame" name="WorkerPanel" template="MTLayout/MTPanelTemplate">        
+                
+                <Frame type="Frame" name="MaxWorkerPerBasePanel" template="MTLayout/MTSliderPanelTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Height val="100"/>
+
+                    <Frame type="Label" name="MTNameLabel">
+                        <Text val="Worker count required per base"/>
+                    </Frame>
+                    <Frame type="Slider" name="MTSlider">
+                        <MinValue val="16"/>
+                        <MaxValue val="30"/>
+                    </Frame>                    
+                </Frame>        
+            </Frame>
+
+            <!-- END PANELS -->
 
         </Frame>
     </Frame>
