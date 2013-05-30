@@ -99,11 +99,13 @@
 
     <!-- Frame Panel for configuration details -->
     <Frame type="Frame" name="MTPanelTemplate">
-        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-        
+        <Anchor relative="$parent"/>
+
+        <Visible val="False"/>        
+    </Frame>
+
+    <Frame type="Frame" name="BackgroundFrame">
+
         <Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
             <Anchor relative="$parent"/>
         </Frame>
@@ -113,19 +115,16 @@
 <!-- Master Frame -->
 
 <Frame type="Frame" name="MasterPanel">
-        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+        <Anchor relative="$parent"/>
 
         
+        <!-- LEFT SIDE  -->
 
-
-        <Frame type="Frame" name="LeftFrame">
+        <Frame type="Frame" name="LeftFrame" template="MTLayout/BackgroundFrame">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>        
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-            <Width val="290"/>
+            <Width val="310"/>
 
             <Frame type="Image" name="OuterBackground" template="StandardTemplates/StandardOuterBorderTemplate">
                 <Anchor relative="$parent"/>
@@ -134,122 +133,107 @@
             <Frame type="Frame" name="AttackConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
                 <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
                 <Frame type="Button" name="ConfigButton">
-                    <Text val="Attack Waves"/>
+                    <Text val="Attack Wave"/>
                 </Frame>
             </Frame>
 
             <Frame type="Frame" name="CreepConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/AttackConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/AttackConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
                     <Text val="Creep"/>
                 </Frame>
             </Frame>
 
             <Frame type="Frame" name="EnergyConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/CreepConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/CreepConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
                     <Text val="Energy"/>
                 </Frame>
             </Frame>
 
             <Frame type="Frame" name="ExecutorConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/EnergyConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/EnergyConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
                     <Text val="Executor"/>
                 </Frame>
             </Frame>
 
             <Frame type="Frame" name="MineralConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/ExecutorConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/ExecutorConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
-                    <Text val="Minierals"/>
+                    <Text val="Minieral"/>
                 </Frame>
             </Frame>
             
             <Frame type="Frame" name="MinimapConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/MineralConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/MineralConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
-                    <Text val="Minierals"/>
+                    <Text val="Minimap"/>
                 </Frame>
             </Frame>
 
             <Frame type="Frame" name="OverqueueConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/MinimapConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/MinimapConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
                     <Text val="Overqueue"/>
                 </Frame>
             </Frame>            
 
             <Frame type="Frame" name="ProbeConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/OverqueueConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/OverqueueConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
                     <Text val="Probe"/>
                 </Frame>
             </Frame>            
 
             <Frame type="Frame" name="QueenConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/ProbeConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/ProbeConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
                     <Text val="Queen"/>
                 </Frame>
             </Frame>
                 
             <Frame type="Frame" name="SupplyCapConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/QueenConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/QueenConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
-                    <Text val="Minierals"/>
+                    <Text val="Supply"/>
                 </Frame>
             </Frame>
 
             <Frame type="Frame" name="WorkerConfigButtonPanel" template="MTLayout/MTConfigButtonPanel">
-                <Anchor side="Top" relative="$parent/SupplyCapConfigButtonPanel" pos="Max" offset="10"/>
+                <Anchor side="Top" relative="$parent/SupplyCapConfigButtonPanel" pos="Max" offset="0"/>
                 <Frame type="Button" name="ConfigButton">
-                    <Text val="Workers"/>
+                    <Text val="Worker"/>
                 </Frame>
             </Frame>
+
+
+            <Frame type="Button" name="BackButton" template="StandardBattlenetTemplates/BattlenetStandardBackButtonTemplate">
+                
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            </Frame>
+
+            <Frame type="Button" name="SaveButton" template="StandardBattlenetTemplates/BattlenetStandardMediumButtonTemplate">
+                <Text val="Save"/>
+                <Anchor side="Top" relative="$parent/BackButton" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent/BackButton" pos="Max" offset="4"/>
+            </Frame>
+
 
         </Frame>
 
 
-        <Frame type="Frame" name="RightFrame">
+
+
+<!-- RIGHT SIDE Frame Panel for Configuration Buttons -->
+
+        <Frame type="Frame" name="RightFrame" template="MTLayout/BackgroundFrame">
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
             <Anchor side="Left" relative="$parent/LeftFrame" pos="Max" offset="0"/>        
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>     
 
-        <!-- PROBE -->
-            <Frame type="Frame" name="MTProbePanel" template="MTLayout/MTPanelTemplate">        
-                
-                <Frame type="Frame" name="ZergSpeedPanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
-                    <Height val="100"/>
-                    <Frame type="Label" name="MTNameLabel">
-                        <Text val="Zerg speed relative to probe"/>
-                    </Frame>
-                    <Frame type="Slider" name="MTSlider">
-                        <MinValue val="25"/>
-                        <MaxValue val="100"/>
-                    </Frame>
-                </Frame>
-
-                <Frame type="Frame" name="ProbeWaypointPanel" template="MTLayout/MTDropdownPanelTemplate">
-                    <Anchor side="Top" relative="$parent/ZergSpeedPanel" pos="Max" offset="10"/>
-                    <Height val="100"/>
-                    <Frame type="Label" name="MTNameLabel">
-                        <Text val="Waypoint control for probe"/>
-                    </Frame>
-
-                </Frame>
-                
-            </Frame>
-
-        </Frame>
-    </Frame>
-
-    <!-- Frame Panel for Configuration Buttons -->
-
-
-    
     <!-- PROBE -->
     <Frame type="Frame" name="MTProbePanel" template="MTLayout/MTPanelTemplate">        
         
@@ -341,5 +325,9 @@
         </Frame>
 
     </Frame>
+
+        </Frame>
+    </Frame>
+
     
 </Desc>
