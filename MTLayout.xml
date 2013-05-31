@@ -298,9 +298,20 @@ probe cannot die."
 
         <!-- MINERALS -->
             <Frame type="Frame" name="MTMineralPanel" template="MTLayout/MTPanelTemplate">        
-                
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Minerals"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"Mineral challenge is to keep your minerals under the specified 
+ammount while maintaining the rest of the challenge"
+                            />
+                    </Frame>
+                </Frame>
+
                 <Frame type="Frame" name="MineralPanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -314,9 +325,21 @@ probe cannot die."
             </Frame>
 
         <!-- DROPS -->
-            <Frame type="Frame" name="MTMinimapDropsPanel" template="MTLayout/MTPanelTemplate">        
+            <Frame type="Frame" name="MTMinimapDropsPanel" template="MTLayout/MTPanelTemplate"> 
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Minimap"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"The minimap challenge is to select the incoming dropship with your 
+cursor before the drop has completed. "
+                            />
+                    </Frame>
+                </Frame>       
+
                 <Frame type="Frame" name="StartTimePanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
                     <Frame type="Label" name="MTNameLabel">
                         <Text val="Initial time drops start appearing"/>
@@ -369,9 +392,21 @@ probe cannot die."
 
             <!-- Executor -->
             <Frame type="Frame" name="ExecutorPanel" template="MTLayout/MTPanelTemplate">        
-                
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Executor"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"When drop capability is detected by the player, ie. Medivacs/Warp 
+prison created or Overlord Sacs have been researched, the executor is 
+to be rescued as soon as it pops up on the right hand side of the map."
+                            />
+                    </Frame>
+                </Frame>
+
                 <Frame type="Frame" name="Frequency" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -399,9 +434,23 @@ probe cannot die."
 
             <!-- Attack Waves -->
             <Frame type="Frame" name="AttackWavePanel" template="MTLayout/MTPanelTemplate">        
-                
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Attack Wave"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"Attack Waves come at the estimated time specified at the estimated frequency. There is a bit of
+randomness added to the timing when they are executed. They appear and are created at a ratio to 
+the player's army ratio. To stop the attack waves from coming forever, the player must destroy the 
+statue in the middle of the map. The statue will go invulnerable when its health has been damaged and
+trigger another attack wave."
+                            />
+                    </Frame>
+                </Frame>
+
                 <Frame type="Frame" name="StartTimePanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
                     <Frame type="Label" name="MTNameLabel">
                         <Text val="First attack wave appears at"/>
@@ -414,7 +463,7 @@ probe cannot die."
                 </Frame>  
 
                 <Frame type="Frame" name="FrequencyPanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/StartTimePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -440,7 +489,7 @@ probe cannot die."
                 </Frame>
 
                 <Frame type="Frame" name="StatueLifePanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/StatueCountPanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -453,7 +502,7 @@ probe cannot die."
                 </Frame>
 
                 <Frame type="Frame" name="ArmyRatioPanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/StatueLifePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -468,9 +517,19 @@ probe cannot die."
 
             <!-- Creep -->
             <Frame type="Frame" name="CreepPanel" template="MTLayout/MTPanelTemplate">        
-                
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Creep"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"Creep challenge is to always be moving the creep along. Configurable idle time 
+is calculated to lessen the constraint of always moving the tumor everytime it appears."
+                            />
+                    </Frame>
+                </Frame>
                 <Frame type="Frame" name="AllowedIdleTimePanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -484,10 +543,20 @@ probe cannot die."
             </Frame>
 
             <!-- Energy -->
-            <Frame type="Frame" name="EnergyPanel" template="MTLayout/MTPanelTemplate">        
+            <Frame type="Frame" name="EnergyPanel" template="MTLayout/MTPanelTemplate">     
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Energy"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"Keep the energy within specified range."
+                            />
+                    </Frame>
+                </Frame>   
                 
                 <Frame type="Frame" name="MaxEnergyPanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -502,15 +571,36 @@ probe cannot die."
 
             <!-- Overqueue -->
             <Frame type="Frame" name="OverqueuePanel" template="MTLayout/MTPanelTemplate">        
-                <!-- add intro -->
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Overqueue"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"Keeps track when you queue more than 1 extra unit per building (or 2 extra
+ for reactored buildings)."
+                            />
+                    </Frame>
+                </Frame>
                      
             </Frame>
 
             <!-- Queen -->
             <Frame type="Frame" name="QueenPanel" template="MTLayout/MTPanelTemplate">        
-                
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Queens"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"This challenge allows you to keep track of when injects are being missed. If energy is 
+above what is specified and hatchery is not in the middle of a injection, player will accumulate
+time failed on this challenge."
+                            />
+                    </Frame>
+                </Frame>
                 <Frame type="Frame" name="MaxEnergyPanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
@@ -524,16 +614,38 @@ probe cannot die."
             </Frame>
 
             <!-- Supply Cap -->
-            <Frame type="Frame" name="OverqueuePanel" template="MTLayout/MTPanelTemplate">        
-                <!-- add intro -->
+            <Frame type="Frame" name="SupplyMaxPanel" template="MTLayout/MTPanelTemplate">        
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Executor"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"Do not get supply blocked. Due to Map editor restrictions, we can only detect how long
+a player has reached its current max supply. This will be slightly off but should still reflect overall
+supply blocking issues."
+                            />
+                    </Frame>
+                </Frame>
                      
             </Frame>
 
             <!-- Workers -->
             <Frame type="Frame" name="WorkerPanel" template="MTLayout/MTPanelTemplate">        
-                
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                    <Frame type="Label" name="MTTitleLabel">
+                        <Text val="Workers"/>
+                    </Frame>
+                    <Frame type="Label" name="MTDescriptionLabel">
+                        <Text val=
+"Whenever a player is not building a worker, and can, and the current worker count is less than the number
+of bases (max of 2). Time will be accumulated. Normally a saturated base is 24 workers (3 rows of 8), but because
+some players use build orders with less on gas, the user can specify how many workers are needed to be built."
+                            />
+                    </Frame>
+                </Frame>
                 <Frame type="Frame" name="MaxWorkerPerBasePanel" template="MTLayout/MTSliderPanelTemplate">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Top" relative="$parent/TitlePanel" pos="Max" offset="10"/>
                     <Height val="100"/>
 
                     <Frame type="Label" name="MTNameLabel">
