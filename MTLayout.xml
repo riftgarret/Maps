@@ -17,7 +17,7 @@
     </Frame>
 
     <Frame type="Label" name="MTLabelTemplate">
-        <Style val="@@OptionsLabel"/>
+        <Style val="MTLabel"/>
     </Frame>
     
 
@@ -36,7 +36,7 @@
         </Frame>   
 
         <Frame type="Label" name="DialogLabel" template="MTLayout/MTLabelTemplate">
-            <Anchor side="Left" relative="$parent/DialogButton" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/DialogButton" pos="Max" offset="10"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>  
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>   
@@ -47,7 +47,7 @@
     <Frame type="Frame" name="MTDifficultyCheckbox">                
         <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
         <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
-        <Height val="90"/>
+        <Height val="30"/>
 
         <Frame type="CheckBox" name="DialogCheckBox" template="StandardTemplates/StandardCheckBoxTemplate"> 
             <Anchor side="Left" relative="$parent" pos="Min" offset="20"/>
@@ -57,7 +57,7 @@
         </Frame>  
 
         <Frame type="Label" name="DialogLabel" >
-            <Anchor side="Left" relative="$parent/DialogCheckbox" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/DialogCheckbox" pos="Max" offset="10"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>  
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>  
@@ -116,6 +116,7 @@
 
         <Frame type="Label" name="MTNameLabel" template="MTLayout/MTLabelTemplate">
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>                
         </Frame>
         
@@ -138,7 +139,7 @@
         <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>  
         <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
         <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
-        <Height val="120"/>
+        <Height val="160"/>
 
         <Frame type="Label" name="MTTitleLabel" template="MTLayout/MTHeaderLabelTemplate">
             <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
@@ -190,6 +191,7 @@
             <Text val="Easy"/>
         </Frame>
         <Frame type="Label" name="DialogLabel">
+            <Style val="MTLabel"/>
             <Text val="Ling speed is slow | Attack Waves are weak and delayed and limited | Drops are delayed | Enemy upgrades are minimal | No Executor"/>
         </Frame>
     </Frame>
@@ -200,6 +202,7 @@
             <Text val="Medium"/>
         </Frame>
         <Frame type="Label" name="DialogLabel">
+            <Style val="MTLabel"/>
             <Text val="Ling speed is challenging | Attack Waves are normal, limited still | Drops are come sooner | Enemy upgrades are Gold Level | Executor respawns oftenr"/>
         </Frame>
     </Frame>    
@@ -210,14 +213,15 @@
             <Text val="Hard"/>
         </Frame>
         <Frame type="Label" name="DialogLabel">
+            <Style val="MTLabel"/>
             <Text val="Ling speed is fast | Attack Waves are equal to your army supply | Drops come fast and often | Enemy upgrades are maximal of masters level (does not exceed 2/2)| Executor respawns quickly"/>
         </Frame>        
     </Frame>
     <!-- Custom -->
     <Frame type="Frame" name="CustomButtonPanel">                
         <Anchor side="Top" relative="$parent/HardButtonPanel" pos="Max" offset="10" />
-        <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
-        <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+        <Anchor side="Left" relative="$parent" pos="Min" offset="10" />
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-10" />
         <Height val="60"/>
 
         <Frame type="Button" name="CustomDialogButton" template="StandardBattlenetTemplates/BattlenetStandardMediumButtonTemplate">            
@@ -227,10 +231,20 @@
         </Frame>   
 
         <Frame type="Button" name="CustomizeDialogButton" template="StandardBattlenetTemplates/BattlenetStandardMediumButtonTemplate">            
-            <Anchor side="Left" relative="$parent/CustomDialogButton" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/CustomDialogButton" pos="Max" offset="10"/>
             <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>  
             <Text val="Customize"/>
         </Frame>
+
+        <Frame type="Label" name="DialogLabel">
+            <Anchor side="Left" relative="$parent/CustomizeDialogButton" pos="Max" offset="10"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Style val="MTLabel"/>
+            <Text val="Create your own custom settings"/>
+        </Frame>
+        
     </Frame>
     <!-- Warning Dialog checkbox -->
     <Frame type="Frame" name="WarningCheckboxPanel" template="MTLayout/MTDifficultyCheckbox">
@@ -248,7 +262,12 @@
             <Text val="display tutorials"/>
         </Frame>        
     </Frame>
-
+    <!-- Clear high score --> 
+    <Frame type="Button" name="ClearHighScoreeDialogButton" template="StandardBattlenetTemplates/BattlenetStandardMediumButtonTemplate">            
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>  
+        <Text val="Clear High Score"/>
+    </Frame>
 
 </Frame>
 
@@ -559,7 +578,8 @@ to be rescued as soon as it pops up on the right hand side of the map."
 
             <!-- Attack Waves -->
             <Frame type="Frame" name="AttackWavePanel" template="MTLayout/MTPanelTemplate">        
-                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">  
+                    <Height val="200"/>               
                     <Frame type="Label" name="MTTitleLabel">
                         <Text val="Attack Wave"/>
                     </Frame>
@@ -739,8 +759,8 @@ time failed on this challenge."
             </Frame>
 
             <!-- Supply Cap -->
-            <Frame type="Frame" name="SupplyMaxPanel" template="MTLayout/MTPanelTemplate">        
-                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+            <Frame type="Frame" name="SupplyMaxPanel" template="MTLayout/MTPanelTemplate">                
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                                             
                     <Frame type="Label" name="MTTitleLabel">
                         <Text val="Supply Cap"/>
                     </Frame>
@@ -756,8 +776,8 @@ supply blocking issues."
             </Frame>
 
             <!-- Terran -->
-            <Frame type="Frame" name="TerranPanel" template="MTLayout/MTPanelTemplate">        
-                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                     
+            <Frame type="Frame" name="TerranPanel" template="MTLayout/MTPanelTemplate">                  
+                <Frame type="Frame" name="TitlePanel" template="MTLayout/MTTitlePanelTemplate">                                         
                     <Frame type="Label" name="MTTitleLabel">
                         <Text val="Terran Enemy"/>
                     </Frame>
